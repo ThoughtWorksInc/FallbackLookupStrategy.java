@@ -1,4 +1,6 @@
-organization in ThisBuild := "com.thoughtworks.spring.security.acls.jdbc"
+sonatypeProfileName := "com.thoughtworks.spring"
+
+organization := s"${sonatypeProfileName.value}.security.acls.jdbc"
 
 name := "FallbackLookupStrategy"
 
