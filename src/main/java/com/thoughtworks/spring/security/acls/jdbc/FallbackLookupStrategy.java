@@ -67,11 +67,11 @@ public class FallbackLookupStrategy implements LookupStrategy {
         ));
     }
 
-    interface OwnerResolver {
+    public interface OwnerResolver {
         Optional<Sid> resolveOwner(ObjectIdentity objectIdentity);
     }
 
-    interface ParentResolver {
+    public interface ParentResolver {
         Optional<ObjectIdentity> resolveParent(ObjectIdentity objectIdentity);
     }
 
