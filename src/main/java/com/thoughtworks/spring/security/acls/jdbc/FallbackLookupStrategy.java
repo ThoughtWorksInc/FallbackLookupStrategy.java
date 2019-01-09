@@ -14,6 +14,15 @@ import static java.util.Collections.singletonList;
 import static java.util.function.Function.identity;
 import static java.util.stream.Collectors.toMap;
 
+/**
+ * A {@link LookupStrategy} that generated a fallback {@link Acl}
+ * when no {@link Acl} for an {@link ObjectIdentity} is found in the database.
+ *
+ * <p>
+ * A {@link OwnerResolver} and a {@link ParentResolver} should be injected into this {@link FallbackLookupStrategy}
+ * to determine the {@link Acl#getOwner() owner} and the {@link Acl#getParentAcl() parent} of the generated {@link Acl}.
+ * </p>
+ */
 @AllArgsConstructor
 public class FallbackLookupStrategy implements LookupStrategy {
 
@@ -22,7 +31,6 @@ public class FallbackLookupStrategy implements LookupStrategy {
     private final OwnerResolver ownerResolver;
     private final ParentResolver parentResolver;
 
-    @Override
     public Map<ObjectIdentity, Acl> readAclsById(List<ObjectIdentity> objects, List<Sid> sids) {
         final Map<ObjectIdentity, Acl> acls = previousStrategy.readAclsById(objects, sids);
         return objects.stream().collect(toMap(
