@@ -9,3 +9,5 @@ libraryDependencies += "org.springframework.security" % "spring-security-acl" % 
 libraryDependencies += "org.projectlombok" % "lombok" % "1.18.4" % Provided
 
 crossPaths := false
+
+autoScalaLibrary := false
